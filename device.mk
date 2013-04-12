@@ -104,12 +104,12 @@ PRODUCT_COPY_FILES += \
 
 # NFC packages
 PRODUCT_PACKAGES += \
-    libnfc-nci \
-    libnfc_nci_jni \
-    nfc_nci.mako \
-    NfcNci \
-    Tag \
-    com.android.nfc_extras
+     libnfc-nci \
+     libnfc_nci_jni \
+     nfc_nci.mako \
+     NfcNci \
+     Tag \
+     com.android.nfc_extras
 
 # NFCEE access control
 ifeq ($(TARGET_BUILD_VARIANT),user)
@@ -148,7 +148,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.telephony.call_ring.multiple=0
 
 #Upto 3 layers can go through overlays
-PRODUCT_PROPERTY_OVERRIDES += debug.mdpcomp.maxlayer=3
+PRODUCT_PROPERTY_OVERRIDES += persist.hwc.mdpcomp.enable=true
 
 PRODUCT_CHARACTERISTICS := nosdcard
 
@@ -197,8 +197,7 @@ PRODUCT_PACKAGES += \
 	libmmcamera_interface
 
 PRODUCT_PACKAGES += \
-	mm-vdec-omx-test \
-	mm-venc-omx-test720p \
+        libmm-omxcore \
 	libdivxdrmdecrypt \
 	libOmxVdec \
 	libOmxVenc \
@@ -217,7 +216,10 @@ PRODUCT_PACKAGES += \
 	bdAddrLoader \
 	libwfcu \
 	conn_init \
-	charger_touch
+    charger_touch
+
+PRODUCT_PACKAGES += \
+	keystore.msm8960
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	rild.libpath=/system/lib/libril-qc-qmi-1.so
@@ -239,6 +241,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
         debug.egl.recordable.rgba8888=1
 
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.qc.sensors.wl_dis=true
+
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	persist.sys.usb.config=mtp
 
@@ -256,3 +261,10 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
 # This is the mako-specific audio package
 $(call inherit-product, frameworks/base/data/sounds/AudioPackage10.mk)
+
+# Goo.im stuff
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.goo.developerid=drewgaren \
+    ro.goo.rom=Bigfoot \
+    ro.goo.version=$(shell date +%Y%m%d-%H%M%S) \
+    ro.goo.board=mako

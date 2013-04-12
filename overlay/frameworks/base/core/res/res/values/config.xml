@@ -23,13 +23,16 @@
     <bool name="config_animateScreenLights">false</bool>
 
     <!-- Default color for notification LED is white. -->
-    <color name="config_defaultNotificationColor">#ffffffff</color>
+    <color name="config_defaultNotificationColor">#ff6eede9</color>
 
     <!-- Default LED on time for notification LED in milliseconds. -->
     <integer name="config_defaultNotificationLedOn">1000</integer>
 
     <!-- Default LED off time for notification LED in milliseconds. -->
     <integer name="config_defaultNotificationLedOff">9000</integer>
+
+    <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
+    <bool name="config_intrusiveBatteryLed">true</bool>
 
     <!-- Whether a software navigation bar should be shown. NOTE: in the future this may be
          autodetected from the Configuration. -->
@@ -264,6 +267,5 @@
 
     <!-- empty string to disable, or like: /sys/kernel/fast_charge/force_fast_charge
          it is disabled by default so devices need to add an overlay to enable-->
-    <string name="config_fastChargePath" translatable="false">/sys/module/msm_otg/parameters/fast_charge</string>
-
+    <string name="config_fastChargePath" translatable="false">/sys/kernel/fast_charge/force_fast_charge</string>
 </resources>
