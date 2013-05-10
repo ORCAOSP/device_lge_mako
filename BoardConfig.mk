@@ -14,16 +14,17 @@
 # limitations under the License.
 #
 
-TARGET_EXTRA_CFLAGS := -mtune=cortex-a9 -mcpu=cortex-a9
+TARGET_EXTRA_CFLAGS := -mtune=cortex-a9 -mcpu=cortex-a9 -fno-inline-functions -fno-ipa-cp-clone -fno-unswitch-loops -fno-tree-vectorize
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 ARCH_ARM_HAVE_TLS_REGISTER := true
-
-# Compiler Optimization
-ARCH_ARM_HIGH_OPTIMIZATION := true
+TARGET_GCC_VERSION := 4.7
+TARGET_USE_O3 := true
+#TARGET_USE_GRAPHITE := true
+TARGET_USE_LINARO_STRING_ROUTINES := true
 
 # Krait optimizations
 TARGET_USE_KRAIT_BIONIC_OPTIMIZATION := true
@@ -69,7 +70,6 @@ BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_AP  := "ap"
-TARGET_QCOM_DISPLAY_VARIANT := caf
 
 BOARD_EGL_CFG := device/lge/mako/egl.cfg
 
